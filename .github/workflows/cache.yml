@@ -1,0 +1,20 @@
+name: Caching Demo
+
+on: [push]
+
+jobs:
+  cache-dependencies:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Cache dependencies
+        id: cache-deps
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: cache-326a757
+
+      - name: prime-cache-326a757
+        run: echo "Cache result: ${{ steps.cache-deps.outputs.cache-hit == 'true' && 'hit' || 'miss' }}"
