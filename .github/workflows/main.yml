@@ -18,4 +18,5 @@ jobs:
           key: cache-326a757
 
       - name: prime-cache-326a757
-        run: echo "Cache result: ${{ steps.cache-deps.outputs.cache-hit == 'true' && 'hit' || 'miss' }}"
+        id: prime-cache-326a757
+        run: echo ${{ steps.cache-deps.outputs.cache-hit }}
